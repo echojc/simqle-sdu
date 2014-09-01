@@ -192,7 +192,7 @@ def sort[T](list: List[T], comparator: Comparator[T]): List[T]
             <br />
             <p class="fragment" data-fragment-index="3">... pretty standard, yeah?</p>
             <pre class="fragment" data-fragment-index="3"><code class="scala" data-trim>
-sort(someList, someComparator)
+sort(userList, userComparator)
             </code></pre>
           </section>
 
@@ -212,7 +212,7 @@ def sort[T](list: List[T])
 implicit val userComparator = new Comparator[User] { ... }
 
 // call with just the list
-sort(someList)
+sort(userList)
             </code></pre>
           </section>
           <section data-transition="linear">
