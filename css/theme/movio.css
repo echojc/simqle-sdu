@@ -30,7 +30,7 @@ body {
   font-size: 36px;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: #93a1a1;
+  color: #aaa;
   position: relative; }
 
 ::selection {
@@ -66,6 +66,10 @@ body {
 .reveal h1 {
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   font-size: 80px; }
+
+.reveal .tagline {
+  color: #93a1a1;
+}
 
 /*********************************************
  * Footer
