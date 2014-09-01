@@ -179,3 +179,27 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #23BDC5; }
+
+
+
+.box-red {
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  border-radius: 5px !important;
+  border: 3px solid red !important;
+  position: absolute;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.box-orange {
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  border-radius: 5px !important;
+  border: 3px solid orange !important;
+  position: absolute;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}

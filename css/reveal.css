@@ -338,6 +338,8 @@ body {
 	overflow: auto;
 	max-height: 400px;
 	word-wrap: normal;
+	font-size: 1.2em;
+	line-height: 1.3em;
 }
 .reveal pre.stretch code {
 	height: 100%;
