@@ -178,6 +178,7 @@ Collections.sort(users, userComparator);
           </section>
         </section>
 
+        <!--
         <section>
           <section data-transition="linear">
             <h3><code>Comparator</code> typeclass in Scala</h3>
@@ -214,6 +215,21 @@ implicit val userComparator = new Comparator[User] { ... }
 // call with just the list
 sort(userList)
             </code></pre>
+          </section>
+          <section data-transition="linear">
+            <h3>Typeclasses take the best of both worlds</h3>
+            <ul>
+              <li class="fragment">... decoupled like <code>Comparator&lt;T&gt;</code></li>
+              <li class="fragment">... but acts as if the class extends <code>Comparable&lt;T&gt;</code></li>
+            </ul>
+          </section>
+        </section>
+        -->
+
+        <section>
+          <section data-transition="linear">
+            <h2>Code example!</h2>
+            <h4><code>Comparator</code> typeclass in Scala</h4>
           </section>
           <section data-transition="linear">
             <h3>Typeclasses take the best of both worlds</h3>
