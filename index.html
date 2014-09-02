@@ -59,7 +59,7 @@
 
         <section>
           <section data-transition="linear">
-            <h3>JDBC?</h3>
+            <h3>JDBC</h3>
             <pre><code class="scala" data-trim>
 case class User(id: Int, name: String)
           </code></pre>
@@ -99,7 +99,7 @@ val users =
             <img class="fragment" data-fragment-index="1" src="images/spring-rowmapper.png" />
             <br />
             <br />
-            <p class="fragment" data-fragment-index="3">This is half of the typeclass pattern!</p>
+            <p class="fragment" data-fragment-index="3">This leads to the idea of typeclasses.</p>
             <div class="box-red fragment roll-in" data-fragment-index="2" style="top: 5.5%; left: 40.5%; width: 34%; height: 8%"></div>
             <div class="box-red fragment roll-in" data-fragment-index="2" style="top: 64%; left: 39%; width: 27%; height: 7%"></div>
           </section>
@@ -108,6 +108,7 @@ val users =
         <section>
           <section data-transition="linear">
             <h2>Typeclass???</h2>
+            <br/>
             <ul>
               <li class="fragment">"decoupled polymorphism"</li>
               <li class="fragment">...</li>
@@ -115,9 +116,6 @@ val users =
                 <li class="fragment">i.e., implementing your interfaces outside of your class definition</li>
               </ul>
             </ul>
-            <br />
-            <br />
-            <p class="fragment">(N.B. if you're using Java, you're already doing this!)</p>
           </section>
         </section>
 
@@ -146,13 +144,15 @@ Collections.sort(users); // can't sort :(
             </code></pre>
           </section>
           <section data-transition="linear">
-            <p>but you still can if you provide a <code>Comparator</code></p>
+            <p>... but you still can if you provide a <code>Comparator</code></p>
             <pre><code class="java" data-trim>
-Collections.sort(users, new Comparator&lt;User> {
+Comparator userComparator = new Comparator&lt;User> {
   public int compare(User a, User b) {
     // ...
   }
-});
+}
+
+Collections.sort(users, userComparator);
             </code></pre>
           </section>
           <section data-transition="linear">
