@@ -237,14 +237,15 @@ sort(userList)
               <li class="fragment">... decoupled like <code>Comparator&lt;T&gt;</code></li>
               <li class="fragment">... but acts as if the class extends <code>Comparable&lt;T&gt;</code></li>
             </ul>
+            <!--
+            <br/>
+            <br/>
+            <p class="fragment">more code examples ...</p>
+            -->
           </section>
         </section>
 
-        <section>
-          <h2>More on extensible polymorphism</h2>
-          <p>moar code examples!</p>
-        </section>
-
+        <!--
         <section>
           <section data-transition="linear">
             <h3>Exploiting typeclasses</h3>
@@ -330,6 +331,56 @@ implicit val stringColumnMapper = new ColumnMapper[String] {
   def get(rs: ResultSet, col: String): String =
     rs.getString(col)
 }
+            </code></pre>
+            <p class="fragment">... code example</p>
+          </section>
+        </section>
+        -->
+
+        <section>
+          <section data-transition="linear">
+            <h3>Exploiting typeclasses</h3>
+            <p>Remember this?</p>
+            <pre><code class="scala" data-trim>
+def query[T](sql: String)(mapper: ResultSet => T): List[T]
+
+val users =
+  query("select * from users") { rs =>
+    val id = rs.getInt("id")
+    val name = rs.getString("name")
+    User(id, name)
+  }
+            </code></pre>
+            <div class="box-red fragment roll-in" style="top: 34%; left: 42%; width: 33%; height: 8%"></div>
+          </section>
+          <section data-transition="linear">
+            <pre><code class="scala" data-trim>
+def query[T](sql: String)(mapper: ResultSet => T): List[T]
+            </code></pre>
+            <pre><code class="scala" data-trim>
+def query[T](sql: String)(implicit rm: RowMapper[T]): List[T]
+            </code></pre>
+            <br/>
+            <pre class="fragment"><code class="scala" data-trim>
+trait RowMapper[T] {
+  def get(rs: ResultSet): T
+}
+            </code></pre>
+          </section>
+          <section data-transition="linear">
+            <pre><code class="scala" data-trim>
+implicit val userRowMapper = new RowMapper[User] {
+  def get(rs: ResultSet): User = {
+    val id = rs.getInt("id")
+    val name = rs.getString("name")
+    User(id, name)
+  }
+}
+            </code></pre>
+            <br/>
+            <pre><code class="scala" data-trim>
+// no explicit RowMapper!
+val users = query[User]("select * from users")
             </code></pre>
             <p class="fragment">... code example</p>
           </section>
