@@ -17,32 +17,32 @@ case class Db(connString: String) {
     }
   }
 
-  def one[T](query: String)(implicit m: RowMapper[T]): Option[T] = withConnection { conn ⇒
-    var stmt: Statement = null
-    var rs: ResultSet = null
-    try {
-      stmt = conn.createStatement()
-      rs = stmt.executeQuery(query)
-      singleResult[T](rs)
-    } finally {
-      if (rs != null) rs.close()
-      if (stmt != null) stmt.close()
-    }
-  }
+  //def one[T](query: String)(implicit m: RowMapper[T]): Option[T] = withConnection { conn ⇒
+  //  var stmt: Statement = null
+  //  var rs: ResultSet = null
+  //  try {
+  //    stmt = conn.createStatement()
+  //    rs = stmt.executeQuery(query)
+  //    singleResult[T](rs)
+  //  } finally {
+  //    if (rs != null) rs.close()
+  //    if (stmt != null) stmt.close()
+  //  }
+  //}
 
-  def list[T](query: String)(implicit m: RowMapper[T]): List[T] = withConnection { conn ⇒
-    var stmt: Statement = null
-    var rs: ResultSet = null
-    try {
-      stmt = conn.createStatement()
-      rs = stmt.executeQuery(query)
-      (Stream.continually(singleResult[T](rs)) takeWhile (_.nonEmpty)).flatten.toList
-    } finally {
-      if (rs != null) rs.close()
-      if (stmt != null) stmt.close()
-    }
-  }
+  //def list[T](query: String)(implicit m: RowMapper[T]): List[T] = withConnection { conn ⇒
+  //  var stmt: Statement = null
+  //  var rs: ResultSet = null
+  //  try {
+  //    stmt = conn.createStatement()
+  //    rs = stmt.executeQuery(query)
+  //    (Stream.continually(singleResult[T](rs)) takeWhile (_.nonEmpty)).flatten.toList
+  //  } finally {
+  //    if (rs != null) rs.close()
+  //    if (stmt != null) stmt.close()
+  //  }
+  //}
 
-  private def singleResult[T](rs: ResultSet)(implicit m: RowMapper[T]): Option[T] =
-    m.fromResultSet(rs)
+  //private def singleResult[T](rs: ResultSet)(implicit m: RowMapper[T]): Option[T] =
+  //  m.get(rs)
 }

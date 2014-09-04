@@ -25,15 +25,10 @@ object Main extends App {
     db.withConnection { conn ⇒
       val stmt = conn.createStatement()
       val rs = stmt.executeQuery(sql)
-      val results = (
-        Stream
-          .continually(rm.fromResultSet(rs))
-          .takeWhile(_.isDefined)
-          .toList
-          .flatten
-      )
+      val buffer = mutable.Buffer.empty[T]
+      while (rs.next()) buffer += rm.get(rs)
       rs.close()
       stmt.close()
-      results
+      buffer.toList
     }
 }
